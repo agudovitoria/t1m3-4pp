@@ -1,0 +1,36 @@
+@import "~react-day-picker/lib/style.css";
+
+body {
+  margin: 0;
+}
+
+.main-title {
+  // font-family: 'Indie Flower', cursive;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 72px;
+}
+
+.DayPicker-Day {
+  // padding: 2em;
+  // border-radius: 0%;
+}
+
+.DayPicker-Weekday {
+  // font-size: 1.5em;
+}
+
+.Box {
+  min-width: 300px;
+}
+
+.icon-rotate {
+  padding-left: 30px;
+  // background: red;
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
