@@ -4,5 +4,5 @@ node_js:
 jobs:
   include:
     - stage: "Tests"
-      name: "Unit Tests"
+      name: "Unit tests"
       script: yarn test
