@@ -32,9 +32,9 @@ export default (initialState) => {
   );
 
   // if (module.hot) {
-  //   module.hot.accept('../reducers', () => {
+  //   module.hot.accept('../__tests__', () => {
   //     store.replaceReducer(createRootReducer(history));
-  //     const nextRootReducer = require('../reducers').default;
+  //     const nextRootReducer = require('../__tests__').default;
   //     store.replaceReducer(nextRootReducer(history));
   //   });
   // }

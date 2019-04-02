@@ -1,7 +1,7 @@
 import counter from '../../src/reducers/counter';
 import { increment, decrement } from '../../src/actions/counter';
 
-describe('Counter reducers', () => {
+describe('Counter __tests__', () => {
   it('should handle initial state', () => {
     expect(counter(undefined, {})).toEqual(0);
   });

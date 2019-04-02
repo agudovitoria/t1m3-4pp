@@ -1,7 +1,7 @@
 import { spy } from 'sinon';
 import { increment, decrement, incrementAsync } from '../../src/actions/counter';
 
-describe('Counter actions', () => {
+describe('Counter __tests__', () => {
   it('should create increment action', () => {
     expect(increment()).toEqual({ type: increment.toString() });
   });
