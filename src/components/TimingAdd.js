@@ -26,9 +26,6 @@ export default class TimingAdd extends Component {
 
   render() {
     const { products, concepts } = this.props;
-    console.log('products', products);
-    console.log('concepts', concepts);
-
     const { product, concept, time } = this.state;
 
     return (
@@ -43,15 +40,15 @@ export default class TimingAdd extends Component {
             <Box align={ "baseline" }>
               <Form>
                 <Grid
-                  rows={ ['flex'] }
-                  columns={ ['flex', 'flex', 'flex', 'flex'] }
-                  gap={ "small" }
-                  fill={ true }
+                  rows={ ["flex"] }
+                  columns={ ["flex", "flex", "flex", "flex"] }
+                  gap={ 'small' }
+                  fill={ "horizontal" }
                   areas={ [
-                    { name: ' product-select', start: [0, 0], end: [0, 0] },
-                    { name: ' concept-select', start: [1, 0], end: [1, 0] },
-                    { name: ' time-input', start: [2, 0], end: [2, 0] },
-                    { name: ' submit-button', start: [3, 0], end: [3, 0] }
+                    { name: 'product-select', start: [0, 0], end: [0, 0] },
+                    { name: 'concept-select', start: [1, 0], end: [1, 0] },
+                    { name: 'time-input', start: [2, 0], end: [2, 0] },
+                    { name: 'submit-button', start: [3, 0], end: [3, 0] }
                   ] }
                 >
                   <Box gridArea={ "product-select" }>

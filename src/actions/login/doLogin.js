@@ -1,2 +1,2 @@
-export const loginAsync = (username, password) =>
+export const doLogin = (username, password) =>
   dispatch => setTimeout(() => ({ username, password }), 3000);

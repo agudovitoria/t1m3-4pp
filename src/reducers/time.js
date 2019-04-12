@@ -11,13 +11,6 @@ import {
 } from '../actions/time/';
 
 const initialState = {
-  // TODO: Delete this fake user and replace by real
-  user: {
-    id: '25dde6c8-fe83-4211-b3ca-ec1b5a15e19d',
-    name: 'John',
-    firstSurname: 'Smith',
-    email: 'jsmith@nohost.com'
-  },
   loading: false,
   times: [],
   error: null
@@ -32,7 +25,7 @@ const getTimesSuccessReducer = (state, { payload }) =>
 const getTimesFailReducer = (state) =>
   Object.assign({}, state, { loading: false, times: [] });
 const addTimesSuccessReducer = (state, { payload }) =>
-  Object.assign({}, state, { loading: false, times: state.times.push(payload) });
+  Object.assign({}, state, { loading: false, times: [...state.times, payload] });
 const addTimesFailReducer = (state) =>
   Object.assign({}, state, { loading: false });
 const showError = (state, { message }) =>

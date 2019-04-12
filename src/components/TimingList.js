@@ -26,8 +26,8 @@ export default class TimingList extends Component {
           {
             times
               .map(({ id, product, concept, timing, validated }) => {
-                const productName = products.find(it => it.id === product);
-                const conceptName = concepts.find(it => it.id === concept);
+                const productName = products.find(it => it.id === product) || '';
+                const conceptName = concepts.find(it => it.id === concept) || '';
 
                 return (
                   <Timing
@@ -39,7 +39,7 @@ export default class TimingList extends Component {
                   />
                 );
               })
-          }
+        }
         </Box>
       </Box>
     );

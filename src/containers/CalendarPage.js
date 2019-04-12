@@ -11,6 +11,7 @@ import * as conceptActions from '../actions/concepts/';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import Loading from '../components/Loading';
+import { loginSelectors, calendarSelectors } from '../selectors/';
 
 class CalendarPage extends Component {
   static propTypes = {
@@ -29,7 +30,6 @@ class CalendarPage extends Component {
     actions: PropTypes.shape({
       calendarActions: PropTypes.shape({
         clearCalendar: PropTypes.func,
-        getSelectedDay: PropTypes.func,
         selectDay: PropTypes.func
       }),
       timeActions: PropTypes.shape({
@@ -93,20 +93,20 @@ class CalendarPage extends Component {
     };
 
     const onAddTime = (time) => {
-      console.log('Add new time', time);
       addTime(id, selectedDay, time);
     };
 
     return (
       <Grid
-        rows={ ['flex'] }
+        rows={ ['xxsmall', 'flex'] }
         columns={ ['flex', 'flex', 'flex'] }
         gap={ "small" }
         fill={ "horizontal" }
         areas={ [
-          { name: 'calendar', start: [0, 0], end: [0, 0] },
-          { name: 'times-list', start: [1, 0], end: [1, 0] },
-          { name: 'detail', start: [2, 0], end: [2, 0] }
+          { name: 'menubar', start: [0, 0], end: [2, 0] },
+          { name: 'calendar', start: [0, 1], end: [0, 1] },
+          { name: 'times-list', start: [1, 1], end: [1, 1] },
+          { name: 'detail', start: [2, 1], end: [2, 1] }
         ] }
       >
         { loading && <Loading/> }
@@ -149,11 +149,16 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => {
+  const user = loginSelectors.getUser(state);
+  const selectedDay = calendarSelectors.getSelectedDay(state);
+
+  console.debug('Loaded user', user);
+  console.debug('Loaded selected day', selectedDay);
+
   const {
-    calendar: { selectedDay },
     product: { products },
     concept: { concepts },
-    time: { user, loading, times }
+    time: { loading, times }
   } = state;
 
   return { user, loading, selectedDay, times, products, concepts };

@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
-import { connectRouter } from 'connected-react-router';
+import { connectRouter} from 'connected-react-router';
 import login from './login';
 import calendar from './calendar';
 import time from './time';
 import product from './product';
 import concept from './concept';
+import menu from './menu';
 
 
 export default (history) => {
@@ -16,6 +17,7 @@ export default (history) => {
     calendar,
     time,
     product,
-    concept
+    concept,
+    menu
   });
 };

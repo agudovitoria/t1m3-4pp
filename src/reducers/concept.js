@@ -8,9 +8,7 @@ import {
 
 const initialState = {
   loading: false,
-  concepts: [],
-  error: false,
-  message: null
+  concepts: []
 };
 
 const getConceptsSuccessReducer = (state, { payload }) =>
@@ -20,14 +18,14 @@ const getConceptsFailReducer = (state) =>
 const clearConceptsReducer = () =>
   Object.assign({}, initialState);
 
-const showError = (state, { message }) =>
-  Object.assign({}, state, { error: true, message });
+const showError = (state, { payload }) =>
+  Object.assign({}, state, { error: payload });
 
 export default handleActions({
   [getConceptsSuccess]: (state, payload) => getConceptsSuccessReducer(state, payload),
   [getConceptsFail]: (state, payload) => {
     getConceptsFailReducer(state, payload);
-    showError(state, { message: 'Error dispatched!' });
+    showError(state, payload);
   },
   [clearConcepts]: state => clearConceptsReducer(state)
 }, initialState);

@@ -6,9 +6,7 @@ import {
 } from '../actions/calendar/';
 
 const initialState = {
-  selectedDay: new Date(),
-  error: false,
-  message: null
+  selectedDay: new Date()
 };
 
 const selectDayReducer = (state, { payload }) =>
