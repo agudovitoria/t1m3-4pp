@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Grid } from 'grommet';
 import { Clock, Folder, Stakeholder } from 'grommet-icons';
+import { Tag } from './Tag';
 
 export default class Timing extends Component {
   static propTypes = {
@@ -17,15 +18,16 @@ export default class Timing extends Component {
     return (
       <Box pad={ "small" } alignContent={ "between" } elevation={ "small" } background={ "light-1" } gap={ "small" }>
         <Grid
-          rows={ ['auto'] }
-          columns={ ['flex', 'flex', 'flex'] }
+          rows={ ['flex'] }
+          columns={ ['flex', 'flex', 'flex', 'flex'] }
           gap={ "medium" }
           fill={ "horizontal" }
           areas={
             [
               { name: 'product', start: [0, 0], end: [0, 0] },
               { name: 'concept', start: [1, 0], end: [1, 0] },
-              { name: 'time', start: [2, 0], end: [2, 0] }
+              { name: 'time', start: [2, 0], end: [2, 0] },
+              { name: 'state', start: [3, 0], end: [3, 0] }
             ]
           }
         >
@@ -40,6 +42,9 @@ export default class Timing extends Component {
           <Box gridArea={ "time" } direction={ "row" } gap={ "small" } align={ "center" }>
             <Clock/>
             { timing }
+          </Box>
+          <Box gridArea={ "state" } direction={ "row" } gap={ "small" } align={ "right" }>
+            <Tag value={ "pending" }/>
           </Box>
         </Grid>
       </Box>

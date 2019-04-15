@@ -13,15 +13,20 @@ export default class TimingAdd extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: '',
-      concept: '',
+      product: {},
+      concept: {},
       time: 0
     };
   }
 
   submit() {
     const { onAddTime } = this.props;
-    onAddTime(this.state);
+    const { product, concept, time } = this.state;
+    onAddTime({
+      product: product.id,
+      concept: concept.id,
+      time: time
+    });
   }
 
   render() {
@@ -59,7 +64,7 @@ export default class TimingAdd extends Component {
                         value={ product }
                         valueKey={ "id" }
                         labelKey={ "name" }
-                        onChange={ ({ value: { id } }) => this.setState({ product: id }) }
+                        onChange={ ({ value  }) => this.setState({ product: value }) }
                       />
                     </FormField>
                   </Box>
@@ -71,7 +76,7 @@ export default class TimingAdd extends Component {
                         value={ concept }
                         valueKey={ "id" }
                         labelKey={ "name" }
-                        onChange={ ({ value: { id } }) => this.setState({ concept: id }) }
+                        onChange={ ({ value  }) => this.setState({ concept: value }) }
                       />
                     </FormField>
                   </Box>
@@ -83,7 +88,7 @@ export default class TimingAdd extends Component {
                         max={ "99" }
                         autoComplete={ "off" }
                         value={ time }
-                        onChange={ ({ target: { value } }) => this.setState({ time: value }) }
+                        onChange={ ({ value  }) => this.setState({ time: value }) }
                       />
                     </FormField>
                   </Box>

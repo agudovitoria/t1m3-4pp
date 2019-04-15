@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Box, Button, Collapsible, Heading, Text } from 'grommet';
-import { Menu } from 'grommet-icons';
+import { Anchor, Box, Button, Collapsible, Heading, Text } from 'grommet';
+import { Calendar, Menu, User } from 'grommet-icons';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginSelectors } from '../selectors/';
@@ -8,7 +8,13 @@ import { loginSelectors } from '../selectors/';
 export class ContainerManagerPage extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
-    user: PropTypes.object.isRequired
+    user: PropTypes.shape({
+      id: PropTypes.string,
+      firstName: PropTypes.string,
+      firstSurname: PropTypes.string,
+      secondSurname: PropTypes.string,
+      email: PropTypes.string
+    }),
   };
 
   state = {
@@ -22,46 +28,48 @@ export class ContainerManagerPage extends Component {
   }
 
   render() {
-    const { children, user } = this.props;
+    const { children, user: { firstName } } = this.props;
 
     const { openNotification } = this.state;
 
     return (
       <Box fill>
         <Box
-          as="header"
-          direction="row"
-          align="center"
+          as={"header"}
+          direction={"row"}
+          align={"center"}
           pad={ { vertical: "small", horizontal: "medium" } }
-          justify="between"
-          background="neutral-3"
-          elevation="large"
+          justify={"between"}
+          background={"neutral-3"}
+          elevation={ "large"}
           style={ { zIndex: "1000" } }
         >
           <Button
             onClick={ () => this.toggleMenu() }
-            icon={ <Menu color="white"/> }
+            icon={ <Menu color={ "white"}/> }
           />
-          <Heading level={ 3 } margin="none" color="white">
-            <strong>{ user.firstName }</strong>
-          </Heading>
+          <User />{ firstName }
         </Box>
         <Box
           flex
-          fill={ "vertical" }
-          direction="row">
-          <Collapsible direction="horizontal" open={ openNotification }>
+          direction={"row"}>
+          <Collapsible direction={ "horizontal"} open={ openNotification }>
             <Box
               flex
-              width="small"
-              background="light-2"
-              pad="xsmall"
-              elevation="small"
+              width={ "small" }
+              background={ "light-1" }
+              pad={
+                {
+                  "vertical": "large",
+                  "horizontal": "medium"
+                }
+              }
+              elevation={ "xlarge" }
             >
-              <Text size="xlarge">Sidebar</Text>
+              <Anchor icon={ <Calendar/> } href={"/calendar"} primary label={ "Calendar"} size={ "medium" }/>
             </Box>
           </Collapsible>
-          <Box flex align="center" justify="center">
+          <Box flex align={ "center"} justify={"center"}>
             { children }
           </Box>
         </Box>
@@ -72,8 +80,6 @@ export class ContainerManagerPage extends Component {
 
 const mapStateToProps = (state) => {
   const user = loginSelectors.getUser(state);
-
-  console.debug('Loaded user', user);
 
   return { user };
 };

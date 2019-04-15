@@ -13,6 +13,24 @@ import moment from 'moment';
 import Loading from '../components/Loading';
 import { loginSelectors, calendarSelectors } from '../selectors/';
 
+const COMPONENT = {
+  MARGIN: {
+    top: "small",
+    right: "medium",
+    left: "medium",
+    bottom: "small"
+  }
+};
+
+const TIME_LIST = {
+  MARGIN: {
+    top: "small",
+    right: "medium",
+    left: "medium",
+    bottom: "small"
+  }
+};
+
 class CalendarPage extends Component {
   static propTypes = {
     user: PropTypes.shape({
@@ -99,8 +117,7 @@ class CalendarPage extends Component {
     return (
       <Grid
         rows={ ['xxsmall', 'flex'] }
-        columns={ ['flex', 'flex', 'flex'] }
-        gap={ "small" }
+        columns={ ['auto', 'flex', 'flex'] }
         fill={ "horizontal" }
         areas={ [
           { name: 'menubar', start: [0, 0], end: [2, 0] },
@@ -110,7 +127,7 @@ class CalendarPage extends Component {
         ] }
       >
         { loading && <Loading/> }
-        <Box gridArea={ "calendar" } elevation={ "large" } margin={ "medium" } pad={ "small" }>
+        <Box gridArea={ "calendar" } elevation={ "large" } margin={ COMPONENT.MARGIN }>
           <Calendar
             size="medium"
             locale="es-ES"
@@ -120,7 +137,7 @@ class CalendarPage extends Component {
           />
 
         </Box>
-        <Box gridArea={ "times-list" } elevation={ "large" } margin={ "medium" } pad={ "small" } gap={ "small" }>
+        <Box gridArea={ "times-list" } elevation={ "large" } margin={ TIME_LIST.MARGIN } pad={ "xsmall" } gap={ "small" }>
           <TimingList
             selectedDay={ selectedDay }
             products={ products }
@@ -151,9 +168,6 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => {
   const user = loginSelectors.getUser(state);
   const selectedDay = calendarSelectors.getSelectedDay(state);
-
-  console.debug('Loaded user', user);
-  console.debug('Loaded selected day', selectedDay);
 
   const {
     product: { products },

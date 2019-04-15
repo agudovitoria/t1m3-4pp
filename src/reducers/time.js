@@ -26,7 +26,7 @@ const getTimesFailReducer = (state) =>
   Object.assign({}, state, { loading: false, times: [] });
 const addTimesSuccessReducer = (state, { payload }) =>
   Object.assign({}, state, { loading: false, times: [...state.times, payload] });
-const addTimesFailReducer = (state) =>
+const addTimesFailReducer = (state, payload) =>
   Object.assign({}, state, { loading: false });
 const showError = (state, { message }) =>
   Object.assign({}, state, { error: message });
@@ -38,7 +38,7 @@ export default handleActions({
   [setTimeAsIdle]: state => setTimeAsIdleReducer(state),
   [getTimesSuccess]: (state, payload) => getTimesSuccessReducer(state, payload),
   [getTimesFail]: (state, payload) => {
-    getTimesFailReducer(state, payload);
+    getTimesFailReducer(state);
     showError(state, { message: 'Error dispatched!' });
   },
   [addTimesSuccess]: (state, payload) => addTimesSuccessReducer(state, payload),
@@ -46,5 +46,5 @@ export default handleActions({
     addTimesFailReducer(state, payload);
     showError(state, { message: 'Error dispatched!' });
   },
-  [clearTime]: state => clearTimeReducer(state)
+  [clearTime]: state => clearTimeReducer()
 }, initialState);
