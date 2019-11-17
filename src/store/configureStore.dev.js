@@ -4,13 +4,13 @@ import thunk from 'redux-thunk';
 import { createBrowserHistory } from 'history';
 import { createLogger } from 'redux-logger';
 import { persistState } from 'redux-devtools';
-import createRootReducer from '../reducers';
-import DevTools from '../containers/DevTools';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import createRootReducer from '../reducers';
+// import DevTools from '../config/devTools';
 
 const logger = createLogger({
   level: 'info',
-  collapsed: true
+  collapsed: true,
 });
 
 export const history = createBrowserHistory();
@@ -27,11 +27,11 @@ export default (initialState) => {
         // DevTools.instrument(),
         persistState(
           window.location.href.match(
-            /[?&]debug_session=([^&]+)\b/
-          )
-        )
-      )
-    )
+            /[?&]debug_session=([^&]+)\b/,
+          ),
+        ),
+      ),
+    ),
   );
 
   // if (module.hot) {
@@ -43,4 +43,4 @@ export default (initialState) => {
   // }
 
   return store;
-}
+};

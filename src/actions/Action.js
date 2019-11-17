@@ -1,4 +1,4 @@
-export class Action {
+export default class Action {
   constructor(type, payload = null) {
     // eslint-disable-next-line
     if (typeof type !== 'string') {

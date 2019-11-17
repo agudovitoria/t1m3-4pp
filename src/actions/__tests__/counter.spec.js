@@ -10,7 +10,7 @@ describe('Counter __tests__', () => {
     expect(decrement()).toEqual({ type: decrement.toString() });
   });
 
-  it('should create increment action async', done => {
+  it('should create increment action async', (done) => {
     const fn = incrementAsync(1);
     expect(fn).toBeInstanceOf(Function);
 

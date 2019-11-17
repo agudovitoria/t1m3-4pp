@@ -3,23 +3,19 @@ import { handleActions } from 'redux-actions';
 import {
   clearConcepts,
   getConceptsSuccess,
-  getConceptsFail
+  getConceptsFail,
 } from '../actions/concepts';
 
 const initialState = {
   loading: false,
-  concepts: []
+  concepts: [],
 };
 
-const getConceptsSuccessReducer = (state, { payload }) =>
-  Object.assign({}, state, { loading: false, concepts: payload });
-const getConceptsFailReducer = (state) =>
-  Object.assign({}, state, { loading: false, concepts: [] });
-const clearConceptsReducer = () =>
-  Object.assign({}, initialState);
+const getConceptsSuccessReducer = (state, { payload }) => ({ ...state, loading: false, concepts: payload });
+const getConceptsFailReducer = (state) => ({ ...state, loading: false, concepts: [] });
+const clearConceptsReducer = () => ({ ...initialState });
 
-const showError = (state, { payload }) =>
-  Object.assign({}, state, { error: payload });
+const showError = (state, { payload }) => ({ ...state, error: payload });
 
 export default handleActions({
   [getConceptsSuccess]: (state, payload) => getConceptsSuccessReducer(state, payload),
@@ -27,5 +23,5 @@ export default handleActions({
     getConceptsFailReducer(state, payload);
     showError(state, payload);
   },
-  [clearConcepts]: state => clearConceptsReducer(state)
+  [clearConcepts]: (state) => clearConceptsReducer(state),
 }, initialState);

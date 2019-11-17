@@ -12,7 +12,7 @@ describe('<CounterPage />', () => {
     const tree = renderer.create(
       <Provider store={store}>
         <CounterPage />
-      </Provider>
+      </Provider>,
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -24,7 +24,7 @@ describe('<CounterPage />', () => {
     const container = mount(
       <Provider store={store}>
         <CounterPage />
-      </Provider>
+      </Provider>,
     );
 
     const button = container.childAt(1);
@@ -40,7 +40,7 @@ describe('<CounterPage />', () => {
     const container = mount(
       <Provider store={store}>
         <CounterPage />
-      </Provider>
+      </Provider>,
     );
 
     const button = container.childAt(2);

@@ -12,7 +12,7 @@ describe('<Counter />', () => {
         incrementAsync={() => false}
         decrement={() => false}
         counter={0}
-      />
+      />,
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -27,7 +27,7 @@ describe('<Counter />', () => {
         incrementAsync={() => false}
         decrement={() => false}
         counter={0}
-      />
+      />,
     );
 
     const button = component.childAt(1);
@@ -45,7 +45,7 @@ describe('<Counter />', () => {
         incrementAsync={() => false}
         decrement={decrement}
         counter={0}
-      />
+      />,
     );
 
     const button = component.childAt(2);
@@ -63,7 +63,7 @@ describe('<Counter />', () => {
         incrementAsync={incrementAsync}
         decrement={() => false}
         counter={0}
-      />
+      />,
     );
 
     const button = component.childAt(3);
