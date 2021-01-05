@@ -4,7 +4,7 @@
   "description": "Basic Timing webapp for time registry and control for coworkers",
   "private": true,
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "connected-react-router": "^6.3.2",
     "grommet": "^2.6.5",
     "grommet-icons": "^4.2.0",
