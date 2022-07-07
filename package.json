@@ -8,7 +8,7 @@
     "connected-react-router": "^6.3.2",
     "grommet": "^2.6.5",
     "grommet-icons": "^4.2.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
